@@ -1,4 +1,4 @@
-// Nubbi — the app's own mascot: a rounded gumdrop with an antenna + sparkle. Original design, inspired by the spirit of Coucou's mascot (Louis Raillé).
+// Nubbi — the app's own mascot: a rounded gumdrop with an antenna + sparkle. Original Nexora design.
 (function () {
   const NS = 'http://www.w3.org/2000/svg';
   // Gumdrop body: domed top, soft flat bottom (Nubbi's own silhouette)

@@ -6,10 +6,11 @@ const b = require(path.join(root, 'src', 'brand.json'));
 const pkgPath = path.join(root, 'package.json');
 const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
 pkg.name = b.slug; pkg.productName = b.name; pkg.version = b.version;
-pkg.description = `${b.name} — ${b.tagline}. Free and open source (MIT). Inspired by ${b.inspiration.name} by ${b.inspiration.author} (MIT).`;
+pkg.description = `${b.displayName} — ${b.tagline}. Free and open source (MIT).`;
+pkg.author = b.company; pkg.build.copyright = `Copyright ${b.copyright}`;
 pkg.build.appId = b.appId; pkg.build.productName = b.name;
 pkg.build.mac.artifactName = `${b.archivePrefix}-\${version}-mac-\${arch}.\${ext}`;
-pkg.build.mac.extendInfo = { ...(pkg.build.mac.extendInfo || {}), LSUIElement: true, CFBundleDisplayName: b.name,
+pkg.build.mac.extendInfo = { ...(pkg.build.mac.extendInfo || {}), LSUIElement: true, CFBundleDisplayName: b.name, NSHumanReadableCopyright: `Copyright ${b.copyright}`,
   NSAppleEventsUsageDescription: `${b.name} brings your terminal to the front when you click Open terminal.` };
 // hook relay script: default dir + env override name
 const hookPath = path.join(root, 'src', 'hooks', b.hookScript);

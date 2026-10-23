@@ -182,7 +182,7 @@ function buildRequest({ provider, model, key, doc, history = [], question, ollam
     case 'groq':
       return { url: `${E.groq}/openai/v1/chat/completions`, headers: { ...json, authorization: `Bearer ${key}` }, body: { model: m, messages: openaiMessages(p, doc, ts, mode), stream: true, max_completion_tokens: 4096 }, format: 'openai', model: m, mode };
     case 'openrouter':
-      return { url: `${E.openrouter}/api/v1/chat/completions`, headers: { ...json, authorization: `Bearer ${key}`, 'HTTP-Referer': 'https://github.com/Louis-CFM/coucou', 'X-Title': brand.name }, body: { model: m, messages: openaiMessages(p, doc, ts, mode), stream: true }, format: 'openai', model: m, mode };
+      return { url: `${E.openrouter}/api/v1/chat/completions`, headers: { ...json, authorization: `Bearer ${key}`, 'HTTP-Referer': 'https://github.com/mustafakijai/nubbi', 'X-Title': brand.name }, body: { model: m, messages: openaiMessages(p, doc, ts, mode), stream: true }, format: 'openai', model: m, mode };
     case 'gemini':
       return { url: `${E.gemini}/v1beta/models/${encodeURIComponent(m)}:streamGenerateContent?alt=sse`, headers: { ...json, 'x-goog-api-key': key }, body: geminiBody(p, doc, ts, mode), format: 'gemini', model: m, mode };
     case 'ollama':

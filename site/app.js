@@ -112,7 +112,7 @@
       bubble.classList.add('show'); clearTimeout(dizzyT); dizzyT = setTimeout(() => { bubble.classList.remove('show'); resume(); }, 2200);
     }
   });
-  function resume() { paused = false; bubble.textContent = "coucou! I'm Nubbi"; nubbi.style.animation = ''; if (!reduce) storyT = setTimeout(next, 2500); }
+  function resume() { paused = false; bubble.textContent = "hi! I'm Nubbi"; nubbi.style.animation = ''; if (!reduce) storyT = setTimeout(next, 2500); }
 
   /* ---------- colour swatches ---------- */
   const shot = $('.js-color-shot');

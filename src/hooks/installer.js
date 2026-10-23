@@ -1,7 +1,7 @@
 // Installs / removes Nubbi's Claude Code hooks in ~/.claude/settings.json.
 // Rules: back up first, merge (never touch anyone else's hooks or settings),
 // refuse to write over a file we can't parse, write atomically.
-// Migration: entries left by earlier builds (Coucou Notch, Notchling — see brand.json "legacy") are removed
+// Migration: entries left by earlier builds (see brand.json "legacy") are removed
 // in the same backed-up write, so Claude Code never calls two relays.
 const fs = require('fs');
 const path = require('path');

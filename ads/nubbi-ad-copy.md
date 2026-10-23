@@ -23,4 +23,4 @@ Free for Mac · Link in bio
 ## Hashtags
 #Nubbi #macOS #MacBook #MacBookPro #notch #ClaudeCode #AI #AItools #AIassistant #productivity #devtools #coding #programming #developer #buildinpublic #indiedev #techtok #mactips #desksetup #codinglife
 
-(Keep the credit: Nubbi is inspired by Coucou by Louis Raillé (MIT). Nubbi's mascot and assets are original.)
+(Nubbi by Nexora. Mascot and assets are original.)

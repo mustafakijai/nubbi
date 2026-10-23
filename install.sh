@@ -1,5 +1,5 @@
 #!/bin/bash
-# Nubbi — installer for macOS (unsigned, ad-hoc signed build). https://github.com/mustafakijai/nubbi
+# Nubbi by Nexora — installer for macOS (unsigned, ad-hoc signed build). https://github.com/mustafakijai/nubbi
 # Usage:  cd into the folder with the .tar.xz files, then:  bash install.sh
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
@@ -14,10 +14,10 @@ TARBALL="$(ls "$HERE"/Nubbi-*-mac-"$ARCH".app.tar.xz 2>/dev/null | sort | tail -
 echo "→ Installing $(basename "$TARBALL") ($ARCH)"
 SUDO=""; [ -w /Applications ] || SUDO="sudo"
 
-# Retire the earlier builds (Coucou Notch v2 / Notchling) so two notch apps don't fight over the notch.
+# Retire earlier notch-app builds (names listed in src/brand.json "legacy") so two notch apps don't fight over the notch.
 for OLD in "Coucou Notch" "Notchling"; do
-  if pgrep -xq "$OLD"; then echo "→ Quitting old $OLD"; osascript -e "quit app \"$OLD\"" >/dev/null 2>&1 || true; sleep 1; pkill -x "$OLD" 2>/dev/null || true; fi
-  if [ -d "/Applications/$OLD.app" ]; then echo "→ Removing /Applications/$OLD.app (replaced by Nubbi)"; $SUDO rm -rf "/Applications/$OLD.app"; fi
+  if pgrep -xq "$OLD"; then echo "→ Quitting an earlier notch build"; osascript -e "quit app \"$OLD\"" >/dev/null 2>&1 || true; sleep 1; pkill -x "$OLD" 2>/dev/null || true; fi
+  if [ -d "/Applications/$OLD.app" ]; then echo "→ Removing an earlier notch build (replaced by Nubbi)"; $SUDO rm -rf "/Applications/$OLD.app"; fi
 done
 if pgrep -xq "Nubbi"; then
   echo "→ Quitting the running Nubbi"; osascript -e 'quit app "Nubbi"' >/dev/null 2>&1 || true; sleep 1; pkill -x "Nubbi" 2>/dev/null || true
@@ -30,9 +30,13 @@ $SUDO mv "$TMP/Nubbi.app" "$APP"
 echo "→ Clearing quarantine (unsigned build)"
 $SUDO xattr -cr "$APP"
 
-echo "→ Installing Claude Code hooks (backs up ~/.claude/settings.json, merges, and migrates old Coucou Notch hooks)"
+echo "→ Installing Claude Code hooks (backs up ~/.claude/settings.json, merges, and migrates hooks from earlier builds)"
 "$APP/Contents/MacOS/Nubbi" --install-hooks || echo "  (hooks step failed — use Settings… → Reinstall instead)"
-[ -d "$HOME/.coucou-notch" ] && { echo "→ Removing old ~/.coucou-notch hook folder"; rm -rf "$HOME/.coucou-notch"; }
+[ -d "$HOME/.coucou-notch" ] && { echo "→ Removing an old hook folder from an earlier build"; rm -rf "$HOME/.coucou-notch"; }
+
+# 3.0.2 moved the bundle id from com.personal.nubbi to com.nexora.nubbi. Settings, keys and hooks are unaffected (they are keyed by app name / ~/.nubbi);
+# only tidy the old id's caches and saved window state.
+for OLDID in com.personal.nubbi; do rm -rf "$HOME/Library/Caches/$OLDID" "$HOME/Library/Caches/$OLDID.ShipIt" "$HOME/Library/Saved Application State/$OLDID.savedState" 2>/dev/null || true; done
 
 echo "→ Launching"
 open "$APP"

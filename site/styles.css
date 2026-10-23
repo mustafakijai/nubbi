@@ -30,6 +30,7 @@ kbd{font:600 .78em var(--font);display:inline-block;min-width:1.6em;padding:.12e
   background:rgba(10,10,15,.72);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:9px;color:var(--text);font-weight:700;font-size:1.08rem;letter-spacing:-.01em}
 .brand:hover{text-decoration:none}
+.brand .by{font-weight:500;font-size:.78em;color:var(--muted,#9a9aa5);margin-left:2px}
 .nav nav{display:none;gap:26px;margin-left:auto}
 .nav nav a{color:var(--muted);font-size:.92rem} .nav nav a:hover{color:var(--text);text-decoration:none}
 .nav .btn-sm{margin-left:auto}

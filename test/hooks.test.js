@@ -169,7 +169,7 @@ test('installer creates settings.json when there is none', () => {
   assert.ok(installer.status({ home }).installed);
 });
 
-test('installer migrates old Coucou Notch / Notchling hooks (backed up first, others untouched)', () => {
+test('installer migrates hooks from earlier builds (backed up first, others untouched)', () => {
   const home = tmpHome();
   const file = path.join(home, '.claude', 'settings.json');
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -182,7 +182,7 @@ test('installer migrates old Coucou Notch / Notchling hooks (backed up first, ot
   assert.strictEqual(installer.status({ home }).legacy, 3);
   const r = installer.install({ home, srcScript: SRC_SCRIPT });
   assert.strictEqual(r.migrated, 3);
-  assert.deepStrictEqual(r.legacyNames.sort(), ['Coucou Notch', 'Notchling']);
+  assert.deepStrictEqual(r.legacyNames.sort(), ['Notch v2 (earlier build)', 'Notchling (earlier build)']);
   assert.deepStrictEqual(JSON.parse(fs.readFileSync(r.backup, 'utf8')), original, 'backup is the pre-migration file');
   const txt = fs.readFileSync(file, 'utf8');
   assert.ok(!/coucou-hook|notchling-hook/.test(txt), 'legacy hooks removed');

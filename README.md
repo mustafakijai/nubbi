@@ -1,20 +1,18 @@
-# Nubbi — your AI buddy lives in your notch (v3.0.1)
+# Nubbi by Nexora — your AI buddy lives in your notch (v3.0.2)
 
 A tiny, free Mac app that lives in your notch. It approves Claude Code in one click and answers questions about any file you drop on it. Free AI is built in.
 
 **Website:** https://mustafakijai.github.io/nubbi/ · **Download:** [Releases](https://github.com/mustafakijai/nubbi/releases/latest)
 
-**Inspired by Coucou by Louis Raillé (MIT):** https://github.com/Louis-CFM/coucou
-Nubbi's mascot, icons, sounds and images are original. None of Coucou's assets are used.
-Nubbi is an independent project. It isn't affiliated with Louis Raillé, Apple or Anthropic.
-Licensed under MIT (see [LICENSE](LICENSE)). The licence keeps Coucou's MIT notice for any code adapted from it.
+Nubbi by Nexora · © 2026 Nexora · MIT licensed (see [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)).
+Nubbi's mascot, icons, sounds and images are original. It isn't affiliated with Apple or Anthropic.
 
 ## Release files
 | File | For |
 |---|---|
-| `Nubbi-3.0.1-mac-arm64.app.tar.xz` | Apple-silicon Macs (M1 and later) |
-| `Nubbi-3.0.1-mac-x64.app.tar.xz` | Intel Macs |
-| `install.sh` | Picks the right archive, removes the old Coucou Notch, installs, clears quarantine and migrates hooks |
+| `Nubbi-3.0.2-mac-arm64.app.tar.xz` | Apple-silicon Macs (M1 and later) |
+| `Nubbi-3.0.2-mac-x64.app.tar.xz` | Intel Macs |
+| `install.sh` | Picks the right archive, retires earlier notch-app builds, installs, clears quarantine and migrates hooks |
 | `SHA256SUMS` | Checksums |
 | `screens/` (in the repo) | Screenshots of this build |
 
@@ -26,8 +24,7 @@ bash install.sh
 ```
 ### Manual install
 ```bash
-osascript -e 'quit app "Coucou Notch"'; rm -rf "/Applications/Coucou Notch.app"   # old v2, if present
-tar -xJf Nubbi-3.0.1-mac-arm64.app.tar.xz        # or -x64 on Intel
+tar -xJf Nubbi-3.0.2-mac-arm64.app.tar.xz        # or -x64 on Intel
 mv Nubbi.app /Applications/
 xattr -cr /Applications/Nubbi.app
 /Applications/Nubbi.app/Contents/MacOS/Nubbi --install-hooks
@@ -38,8 +35,8 @@ You can also use System Settings → Privacy & Security → "Open Anyway".
 
 ### Easiest install (no Terminal)
 Download the `.zip` for your Mac from [Releases](https://github.com/mustafakijai/nubbi/releases/latest):
-- `Nubbi-3.0.1-mac-arm64.zip` for Apple Silicon
-- `Nubbi-3.0.1-mac-x64.zip` for Intel
+- `Nubbi-3.0.2-mac-arm64.zip` for Apple Silicon
+- `Nubbi-3.0.2-mac-x64.zip` for Intel
 
 Then:
 1. Double-click the zip.
@@ -47,10 +44,10 @@ Then:
 3. The first time, right-click → Open → Open.
 On macOS 15+, if there's no Open button, go to System Settings → Privacy & Security → **Open Anyway**.
 
-### Upgrading from Coucou Notch v2
+### Upgrading from an earlier build
 `--install-hooks` (and the first launch) does three things:
 * backs up `~/.claude/settings.json` to `settings.json.nubbi-backup-<timestamp>`;
-* removes only the old `~/.coucou-notch/coucou-hook.sh` entries;
+* removes only hook entries left by earlier notch builds (listed in `src/brand.json` → `legacy`);
 * merges in Nubbi's hooks.
 
 Your own hooks are never touched. If Nubbi isn't running, the hook exits within about a second.
@@ -66,7 +63,7 @@ Claude then asks in the terminal as usual.
 * Works with PDFs, images, text and code files, and docx, pptx and xlsx files.
 
 ### Drag & drop troubleshooting
-* Make sure only one notch app is running: `pkill -x "Coucou Notch"`.
+* Make sure only one notch app is running (quit any earlier notch build).
 * The always-on drop strip is the notch itself and about 50 pt below it. Drops there work even if drag detection fails.
 * Diagnostics: run `/Applications/Nubbi.app/Contents/MacOS/Nubbi --enable-logging`.
   Watch for `dragwatch` lines while you drag.
@@ -101,4 +98,4 @@ bash e2e/run-all.sh              # Xvfb + XDND drag-drop matrix (needs Xvfb, pyt
 node e2e/live-free.js            # one real keyless answer
 node build/brand-sync.js && CSC_IDENTITY_AUTO_DISCOVERY=false npx electron-builder --mac dir --x64 --arm64
 ```
-The name, bundle id and paths all live in `src/brand.json`.
+The name, bundle id (`com.nexora.nubbi` since 3.0.2; it was `com.personal.nubbi` before) and paths all live in `src/brand.json`.

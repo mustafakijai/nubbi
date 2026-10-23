@@ -1,5 +1,4 @@
-// Nubbi — a notch buddy for Claude Code and your files. https://github.com/mustafakijai/nubbi (MIT)
-// Inspired by Coucou by Louis Raillé (github.com/Louis-CFM/coucou, MIT).
+// Nubbi by Nexora — a notch buddy for Claude Code and your files. https://github.com/mustafakijai/nubbi (MIT)
 const { app, BrowserWindow, ipcMain, shell, clipboard, screen, Tray, Menu, nativeImage, globalShortcut, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
@@ -172,9 +171,8 @@ async function pickFile() {
 }
 async function pickAndAsk() { const p = await pickFile(); if (p) sendFile(p); }
 function showAbout() {
-  const i = brand.inspiration;
-  dialog.showMessageBox({ message: `${brand.name} ${app.getVersion()}`, detail: `${brand.tagline}.\n\nFree and open source (MIT) — github.com/mustafakijai/nubbi\nInspired by ${i.name} by ${i.author} (${i.url}, MIT).`, buttons: ['OK', `Open ${i.name} on GitHub`] })
-    .then((r) => { if (r.response === 1) shell.openExternal(i.url); });
+  dialog.showMessageBox({ message: `${brand.displayName} ${app.getVersion()}`, detail: `${brand.tagline}.\n\nCopyright ${brand.copyright}. Free and open source (MIT).\n${brand.repo.replace('https://', '')}`, buttons: ['OK', 'Open on GitHub', 'Licenses'] })
+    .then((r) => { if (r.response === 1) shell.openExternal(brand.repo); else if (r.response === 2) shell.openPath(path.join(process.resourcesPath, 'LICENSE.txt')); });
 }
 function toggleNotch(open) { if (notch) notch.webContents.send('toggle', { open: open !== undefined ? open : 'toggle' }); }
 
