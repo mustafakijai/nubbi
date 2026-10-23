@@ -1,0 +1,65 @@
+{
+  "name": "nubbi",
+  "productName": "Nubbi",
+  "version": "3.0.1",
+  "description": "Nubbi — A tiny notch buddy for Claude Code and your files. Free and open source (MIT). Inspired by Coucou by Louis Raillé (MIT).",
+  "main": "src/main.js",
+  "author": "mustafakijai",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/",
+    "brand": "node build/brand-sync.js",
+    "build:mac": "node build/brand-sync.js && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dir --x64 --arm64"
+  },
+  "devDependencies": {
+    "electron": "45.0.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "com.personal.nubbi",
+    "productName": "Nubbi",
+    "files": [
+      "src/**",
+      "package.json",
+      "!node_modules/pdfjs-dist/**/*.map",
+      "node_modules/pdfjs-dist/package.json",
+      "node_modules/pdfjs-dist/legacy/build/pdf.mjs",
+      "node_modules/pdfjs-dist/legacy/build/pdf.worker.mjs"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "electronLanguages": [
+      "en",
+      "fr"
+    ],
+    "asar": true,
+    "mac": {
+      "identity": null,
+      "icon": "build/icon.png",
+      "category": "public.app-category.productivity",
+      "artifactName": "Nubbi-${version}-mac-${arch}.${ext}",
+      "extendInfo": {
+        "LSUIElement": true,
+        "NSAppleEventsUsageDescription": "Nubbi brings your terminal to the front when you click Open terminal.",
+        "CFBundleDisplayName": "Nubbi"
+      }
+    },
+    "asarUnpack": [
+      "node_modules/pdfjs-dist/**",
+      "src/dragwatch/**"
+    ],
+    "npmRebuild": false
+  },
+  "dependencies": {
+    "pdfjs-dist": "^6.4.299"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mustafakijai/nubbi.git"
+  },
+  "homepage": "https://mustafakijai.github.io/nubbi/"
+}

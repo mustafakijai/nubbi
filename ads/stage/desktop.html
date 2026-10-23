@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="mascot.css"><link rel="stylesheet" href="desktop.css"></head>
+<body>
+<div id="wall">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+  <svg id="ribbons" viewBox="0 0 1440 1080" preserveAspectRatio="none"></svg>
+</div>
+<div id="menubar">
+  <div class="left"><span class="logo"></span><b>Terminal</b><span>Shell</span><span>Edit</span><span>View</span><span>Window</span><span>Help</span></div>
+  <div class="right"><img id="tray" src="tray.png"><svg class="ic" viewBox="0 0 24 24"><path d="M2.5 9.2a14 14 0 0 1 19 0M5.6 12.4a9.5 9.5 0 0 1 12.8 0M8.7 15.6a5 5 0 0 1 6.6 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="19" r="1.6" fill="#fff"/></svg>
+    <span class="batt"><i></i></span><span class="clock">Fri 23 Oct&nbsp; 9:41</span></div>
+</div>
+<div id="hwnotch"></div>
+
+<div class="icon" id="ic-pdf" style="left:742px;top:178px"><div class="doc"><div class="fold"></div><span>PDF</span><div class="lines"><i></i><i></i><i></i></div></div><label>quote.pdf</label></div>
+<div class="icon" id="ic-folder" style="left:862px;top:178px"><div class="folder"><div class="tab"></div></div><label>Projects</label></div>
+<div class="icon side" style="left:1320px;top:120px"><div class="folder"><div class="tab"></div></div><label>Invoices</label></div>
+<div class="icon side" style="left:1320px;top:230px"><div class="folder blue2"><div class="tab"></div></div><label>Screenshots</label></div>
+<div class="icon side" style="left:40px;top:120px"><div class="disk"></div><label>Macintosh HD</label></div>
+
+<div id="term" class="win">
+  <div class="tbar"><i class="r"></i><i class="y"></i><i class="g"></i><div class="ttl" id="tTitle">korus — claude — 96×24</div></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="tbody" id="tbody"></div>
+</div>
+
+<div id="mail" class="win hidden">
+  <div class="tbar mtbar"><i class="r"></i><i class="y"></i><i class="g"></i><div class="ttl">New Message</div><button id="send" class="send"><svg viewBox="0 0 24 24"><path d="M3 11.5 21 3l-8.5 18-2.2-7.3z" fill="#fff"/></svg></button></div>
+  <div class="mrow"><span>To:</span><b id="mTo"></b></div>
+  <div class="mrow"><span>Subject:</span><b id="mSub"></b></div>
+  <div class="mbody" id="mBody"></div>
+</div>
+<div id="toast" class="hidden"><span class="tick">✓</span> Message sent</div>
+
+<div id="endcard" class="hidden endcard">
+  <div class="glow"></div>
+  <div id="endMascot"></div>
+  <h1>Nubbi</h1>
+  <p class="tag">Your AI buddy in the notch</p>
+  <p class="cta"><span>Free for Mac</span><em>·</em><span>Link in bio</span></p>
+</div>
+<script src="nubbi.js"></script>
+<script src="desktop.js"></script>
+</body></html>

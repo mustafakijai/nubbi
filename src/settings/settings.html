@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'">
+<link rel="stylesheet" href="../notch/notch.css">
+<link rel="stylesheet" href="settings.css">
+<title>Nubbi — Settings</title>
+</head>
+<body>
+<div class="drag"></div>
+<main>
+  <header>
+    <div id="hm"></div>
+    <div><h1>Nubbi <span class="ver" id="ver"></span></h1>
+    <p class="muted">Your notch buddy for Claude Code and files.</p></div>
+  </header>
+
+  <section>
+    <h2>AI for your files</h2>
+    <div class="provs" id="provs"></div>
+    <div class="group">
+      <div class="item col pnote"><small id="pNote"></small></div>
+      <div class="item" id="keyItem"><span><b id="keyTitle">API key</b><small id="keySub">Stored encrypted in your macOS Keychain.</small></span>
+        <span class="ctl"><input id="key" type="password" placeholder="Paste key" spellcheck="false" autocomplete="off"><button class="btn" id="keySave">Save</button><button class="btn ghost" id="keyDel" title="Remove key">Remove</button></span></div>
+      <div class="item" id="keyLinkRow"><span><small id="keyLinkTxt"></small></span><span class="ctl"><button class="btn primary" id="keyLink">Get a free key ↗</button></span></div>
+      <div class="item" id="ollamaRow" hidden><span><b>Ollama</b><small id="olSub">Looking for Ollama on this Mac…</small></span><span class="ctl"><input id="olUrl" type="url" spellcheck="false" placeholder="http://127.0.0.1:11434"><button class="btn" id="olScan">Detect</button></span></div>
+      <label class="item"><span><b>Model</b><small id="modelSub">Used for questions about dropped files.</small></span><span class="ctl"><select id="model"></select><button class="btn ghost" id="modelRefresh" title="Refresh list">↻</button></span></label>
+      <label class="item"><span><b>Email answers to</b><small>Pre-fills the Email button (opens your mail app).</small></span><span class="ctl"><input id="email" type="email" placeholder="you@example.com" spellcheck="false"></span></label>
+    </div>
+  </section>
+
+  <section>
+    <h2>Claude Code</h2>
+    <div class="group">
+      <div class="item"><span><b id="hkTitle">Hooks</b><small id="hkSub"></small></span><span class="ctl"><button class="btn primary" id="hkInstall">Install hooks</button><button class="btn ghost" id="hkRemove">Remove</button></span></div>
+      <div class="item col" id="hkMsgRow" hidden><small id="hkMsg"></small></div>
+      <div class="item col"><span><b>Always-allowed</b><small>Commands you approved with “Always”. Remove one to be asked again.</small></span><ul id="rules"></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Notch</h2>
+    <div class="group">
+      <div class="item"><span><b>Nubbi’s colour</b><small>Pick a flavour.</small></span><span class="ctl" id="colors"></span></div>
+      <label class="item"><span><b>Sounds</b><small>Little synthesized plops, chimes and boops.</small></span><span class="ctl"><input type="checkbox" class="sw" id="sound"></span></label>
+      <label class="item"><span><b>Open on hover</b><small>Hover the notch to peek open; click outside to collapse.</small></span><span class="ctl"><input type="checkbox" class="sw" id="peek"></span></label>
+      <label class="item"><span><b>Notch width</b><small id="nwLabel">Auto</small></span><span class="ctl"><input type="range" id="nw" min="0" max="260" step="1"></span></label>
+      <div class="item"><span><b>Keyboard shortcut</b><small>Open or close Nubbi from anywhere.</small></span><span class="ctl"><span class="keys" id="sc"></span></span></div>
+      <div class="item"><span><b>Ask about a file</b><small>Opens a file picker — handy when dragging is awkward. You can also drop files on the menu-bar icon.</small></span><span class="ctl"><span class="keys" id="sc2"></span></span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Shortcut pills</h2>
+    <div class="group" id="pills"></div>
+  </section>
+
+  <footer>
+    <p>Nubbi is free and open source (MIT) — <a href="https://github.com/mustafakijai/nubbi" target="_blank">github.com/mustafakijai/nubbi</a>. Inspired by <b>Coucou</b> by <b>Louis Raillé</b>: <a href="https://github.com/Louis-CFM/coucou" target="_blank">github.com/Louis-CFM/coucou</a> (MIT). Nubbi’s mascot, icons and sounds are original.</p>
+  </footer>
+</main>
+<script src="../notch/nubbi.js"></script>
+<script src="settings.js"></script>
+</body>
+</html>

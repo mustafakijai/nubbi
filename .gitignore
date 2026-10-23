@@ -1,0 +1,17 @@
+node_modules/
+dist/
+dist-final/
+screens/raw/
+ads/rec*/
+ads/out/
+ads/masters/
+ads/*.mp4
+ads/__pycache__/
+ads/assets/*.ttf
+dist-web/
+ads/qa/
+site-screens/
+.env
+.env.*
+*.log
+.DS_Store

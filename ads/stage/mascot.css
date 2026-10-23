@@ -1,0 +1,61 @@
+:root{--spring:linear(0, .009, .035 2.1%, .141 4.4%, .723 12.9%, .938 16.7%, 1.017 19.4%, 1.067, 1.099 24.3%, 1.108 26%, 1.1, 1.077 30.6%, .992 41.2%, .983 45.2%, .987 50.1%, 1 59%, 1.002 70%, 1);}
+/* ---------- nubbi ---------- */
+.nubbi{position:relative;width:var(--s);height:calc(var(--s) * .866);flex:none;cursor:pointer;transition:transform .35s var(--spring)}
+.nubbi svg{width:100%;height:100%;overflow:visible;display:block}
+.nubbi:hover{transform:scale(1.05)} .nubbi:active{transform:scale(.92,.86)}
+.m-squash{transform-origin:60px 99px;transform-box:view-box}
+.m-look{transition:transform .12s linear}
+.m-eye{fill:#17242a} .m-glint{fill:#fff;opacity:.9} .m-glint.sm{opacity:.6}
+.m-cheeks circle{fill:#ff8fa8;opacity:.75}
+.m-antenna{transform-origin:60px 29px;transform-box:view-box;animation:antenna 3.2s ease-in-out infinite}
+.m-spark{transform-box:fill-box;transform-origin:center;animation:sparkle 2.4s ease-in-out infinite}
+@keyframes antenna{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(6deg)}}
+@keyframes sparkle{0%,100%{transform:scale(1) rotate(0)}45%{transform:scale(1.25) rotate(20deg)}55%{transform:scale(.9) rotate(25deg)}}
+.nubbi.dizzy .m-spark{fill:#ffd0c8}
+.nubbi.thinking .m-spark{animation:sparkle .8s ease-in-out infinite}
+.m-squint path,.m-happy path,.m-spiral path,.m-mouth{fill:none;stroke:#17242a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.m-mouth{stroke-width:2.4}
+.m-mouth-o{fill:#3a1f25;display:none}
+.m-squint,.m-happy,.m-spiral,.m-body-red{display:none}
+.m-eyes{animation:blink 5.4s infinite;transform-origin:60px 66px;transform-box:view-box}
+@keyframes blink{0%,46%,50%,100%{transform:scaleY(1)}48%{transform:scaleY(.08)}}
+.nubbi.squint .m-eyes{display:none} .nubbi.squint .m-squint{display:block}
+.nubbi.squint .m-squash{animation:squish .28s var(--spring)}
+@keyframes squish{30%{transform:scale(1.1,.86)}}
+.nubbi.happy .m-eyes{display:none} .nubbi.happy .m-happy{display:block}
+.nubbi.lookdown .m-look{transform:translate(0,5px)!important}
+.nubbi.lookdown .m-mouth{display:none} .nubbi.lookdown .m-mouth-o{display:block}
+.nubbi.bounce .m-squash{animation:bounce .62s cubic-bezier(.3,.9,.4,1) infinite}
+@keyframes bounce{0%,100%{transform:translateY(0) scale(1.04,.95)}45%{transform:translateY(-9px) scale(.97,1.04)}}
+.nubbi.thinking .m-look{animation:think 1.8s ease-in-out infinite!important}
+@keyframes think{0%,100%{transform:translate(-5px,-3px)}50%{transform:translate(5px,-3px)}}
+.nubbi.dizzy .m-body{display:none} .nubbi.dizzy .m-body-red{display:block}
+.nubbi.dizzy .m-eyes,.nubbi.dizzy .m-mouth{display:none} .nubbi.dizzy .m-spiral,.nubbi.dizzy .m-mouth-o{display:block}
+.nubbi.dizzy .m-cheeks{opacity:.25}
+.nubbi.dizzy .sp1,.nubbi.dizzy .sp2{transform-box:fill-box;transform-origin:center;animation:spin 1s linear infinite}
+.nubbi.dizzy .m-look{transform:none!important}
+.nubbi.dizzy .m-squash{animation:wobble .5s ease-in-out infinite}
+@keyframes wobble{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.m-badge{position:absolute;left:-3px;top:-3px;width:20px;height:20px;border-radius:10px;display:none;place-items:center;font-size:11px;font-weight:800;color:#000;
+  box-shadow:0 0 0 2.5px #1b1b1f}
+.m-badge.on{display:grid;animation:pop .4s var(--spring)}
+@keyframes pop{from{transform:scale(0)}}
+.m-badge.orange{background:var(--orange)}
+.m-badge.green{background:var(--green)}
+.m-badge.green::after{content:"";width:8px;height:4.5px;border:2.2px solid #000;border-top:0;border-right:0;transform:translateY(-1px) rotate(-45deg)}
+.m-badge.blue{background:#1b1b1f;box-shadow:none}
+.m-badge.blue::after{content:"";position:absolute;inset:1px;border-radius:50%;border:2.6px solid rgba(76,157,255,.22);border-top-color:var(--blue);border-right-color:var(--blue);animation:spin .75s linear infinite}
+.m-badge.red{background:var(--red);color:#fff}
+.nubbi.glow-blue svg{filter:drop-shadow(0 0 14px rgba(76,157,255,.28))}
+.nubbi.glow-orange svg{filter:drop-shadow(0 0 16px rgba(255,159,10,.35))}
+.nubbi.glow-green svg{filter:drop-shadow(0 0 16px rgba(48,209,88,.3))}
+.nubbi.glow-red svg{filter:drop-shadow(0 0 18px rgba(255,69,58,.45))}
+
+.peek .nubbi{animation:drop .7s var(--spring) both}
+@keyframes drop{from{transform:translateY(-58px) scale(.8)}to{transform:none}}
+.peek .nubbi.retract{animation:retract .3s cubic-bezier(.5,0,.9,.4) both}
+@keyframes retract{to{transform:translateY(-62px) scale(.85)}}
+.nubbi.look-l .m-look{transform:translate(-7px,-1px)!important;transition:transform .22s var(--spring)}
+.nubbi.look-r .m-look{transform:translate(7px,-1px)!important;transition:transform .22s var(--spring)}
+.endcard,.endcard[data-color=mint]{--n1:#e3fff4;--n2:#8debc8;--n3:#42bf93}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'">
+<link rel="stylesheet" href="notch.css">
+<title>Nubbi</title>
+</head>
+<body>
+<div id="island">
+  <div class="ear l"></div><div class="ear r"></div>
+  <div class="clip">
+    <div id="top">
+      <div class="wing l">
+        <span class="wing-only" id="wingNubbi"></span>
+        <button class="ic big-only" id="icHome" title="Sessions"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.6 1.4 7.2a.6.6 0 0 0 .4 1h1.1v5.4c0 .4.3.8.8.8h2.6v-4h3.4v4h2.6c.5 0 .8-.4.8-.8V8.2h1.1a.6.6 0 0 0 .4-1z"/></svg></button>
+        <button class="ic big-only" id="icAsk" title="Ask about a file"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M2.5 2h11c.8 0 1.5.7 1.5 1.5v7c0 .8-.7 1.5-1.5 1.5H7.2L4 14.6c-.3.3-.8 0-.8-.4V12h-.7C1.7 12 1 11.3 1 10.5v-7C1 2.7 1.7 2 2.5 2z"/></svg></button>
+        <button class="ic big-only" id="icAdd" title="Choose a file…"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2.5v11M2.5 8h11"/></svg></button>
+      </div>
+      <div class="wing r">
+        <span class="wing-only wing-count" id="wingCount"></span>
+        <span class="txt big-only" id="running"></span>
+        <button class="ic big-only" id="icSound" title="Mute sounds"></button>
+        <button class="ic big-only" id="icGear" title="Settings…"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M9.4 1.2l.3 1.6c.5.2.9.4 1.3.8l1.6-.5 1.4 2.4-1.2 1.1c.1.5.1 1 0 1.5l1.2 1.1-1.4 2.4-1.6-.5c-.4.3-.8.6-1.3.8l-.3 1.6H6.6l-.3-1.6c-.5-.2-.9-.4-1.3-.8l-1.6.5L2 11.2l1.2-1.1a4 4 0 0 1 0-1.5L2 7.5l1.4-2.4 1.6.5c.4-.3.8-.6 1.3-.8l.3-1.6zM8 5.8a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4z"/></svg></button>
+      </div>
+    </div>
+    <div id="content"></div>
+  </div>
+</div>
+<script src="markdown.js"></script>
+<script src="nubbi.js"></script>
+<script src="sounds.js"></script>
+<script src="notch.js"></script>
+</body>
+</html>

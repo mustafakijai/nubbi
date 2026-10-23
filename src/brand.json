@@ -1,0 +1,18 @@
+{
+  "name": "Nubbi",
+  "mascot": "Nubbi",
+  "appId": "com.personal.nubbi",
+  "slug": "nubbi",
+  "version": "3.0.1",
+  "archivePrefix": "Nubbi",
+  "envPrefix": "NUBBI",
+  "hookDir": ".nubbi",
+  "hookScript": "nubbi-hook.sh",
+  "trayTooltip": "Nubbi",
+  "tagline": "A tiny notch buddy for Claude Code and your files",
+  "inspiration": { "name": "Coucou", "author": "Louis Raillé", "url": "https://github.com/Louis-CFM/coucou" },
+  "legacy": [
+    { "name": "Coucou Notch", "app": "Coucou Notch.app", "hookMarker": ".coucou-notch/coucou-hook.sh", "dir": ".coucou-notch" },
+    { "name": "Notchling", "app": "Notchling.app", "hookMarker": ".notchling/notchling-hook.sh", "dir": ".notchling" }
+  ]
+}
